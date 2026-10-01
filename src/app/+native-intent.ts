@@ -1,18 +1,9 @@
-export function redirectSystemPath({
-  path,
-}: {
-  path: string;
-  initial: boolean;
-}) {
+export async function redirectSystemPath({ path }: { path: string }) {
   try {
     const url = new URL(path);
-
     if (url.hostname === 'expo-sharing') {
       return '/';
     }
-
-    return path;
-  } catch {
-    return '/';
-  }
+  } catch {}
+  return path;
 }
